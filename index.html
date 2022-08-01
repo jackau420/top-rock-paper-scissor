@@ -1,0 +1,87 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissor</title>
+    </head>
+    <script>
+            const choices = ["ROCK", "PAPER" ,"SCISSOR"];
+            let playerWinCount = 0;
+            let computerWinCount = 0;
+
+        function getPlayerSelection(){
+            let playerSelection = choices[prompt("Please enter your selection. 0: ROCK 1: PAPER 2: SCISSOR")];
+            console.log("You selected " + playerSelection + "!"); 
+            return playerSelection;
+        }
+
+        function getComputerChoice(){
+            let choice = choices[Math.floor(Math.random() * 3)]
+            console.log("The computer selected " + choice + "!"); 
+            return choice;
+        }
+
+        function play (playerSelection, computerSelection){
+            let winMessage = "You win! " + playerSelection + " beats " + computerSelection + "!";
+            let loseMessage =  "You lose! " + computerSelection + " beats " + playerSelection + "!";
+            let drawMessage = "That is a draw!";
+            let winner = "";
+
+            if (playerSelection === "ROCK") {
+                if (computerSelection === "SCISSOR"){
+                    playerWinCount++;
+                    console.log(winMessage);
+                } else if (computerSelection === "PAPER"){
+                    computerWinCount++;
+                    console.log(loseMessage);
+                } else if (computerSelection === "ROCK"){
+                    console.log(drawMessage);
+                };
+            }
+
+            if (playerSelection === "PAPER") {
+                if (computerSelection === "ROCK"){
+                    playerWinCount++;
+                    console.log(winMessage);
+                } else if (computerSelection === "SCISSOR"){
+                    computerWinCount++;
+                    console.log(loseMessage);
+                } else if (computerSelection === "PAPER"){
+                    console.log(drawMessage);
+                }
+            }
+
+            if (playerSelection === "SCISSOR") {
+                if (computerSelection === "PAPER"){
+                    playerWinCount++;
+                    console.log(winMessage);
+                } else if (computerSelection === "ROCK"){
+                    computerWinCount++;
+                    console.log(loseMessage);                  
+                } else if (computerSelection === "SCISSOR"){
+                    console.log(drawMessage);
+                }
+            }
+        }
+
+        function game(){
+            
+            playerWinCount = 0;
+            computerWinCount = 0;
+            for (let i = 0; i < 5; i++){
+                play(getPlayerSelection(), getComputerChoice());
+            }
+            if (playerWinCount > computerWinCount){
+                return "You win by " + playerWinCount + " to " + computerWinCount + "!"
+            } else if (playerWinCount < computerWinCount){
+                return "You lose by " + playerWinCount + " to " + computerWinCount + "!"
+            } else {
+                return "DRAW!!!"
+            }
+
+
+        }
+    </script>
+    <body>
+        <h1>Rock Paper Scissor</h1>
+    </body>
+    </html>
